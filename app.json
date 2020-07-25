@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "myApp",
-    "slug": "myApp",
+    "name": "Nested Navigation",
+    "slug": "nestednavi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Basic Nested navigation with drawer and tabs",
+    "githubUrl": "https://github.com/popeating/myApp"
   }
 }
