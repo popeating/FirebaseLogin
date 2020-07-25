@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useRef, useReducer, useEffect, useState } from 'react';
-import { StyleSheet, View, Appearance } from 'react-native';
+import React, { useState } from 'react';
+import { Appearance } from 'react-native';
 import {
   NavigationContainer,
   DarkTheme,
@@ -33,7 +33,7 @@ if (Appearance.getColorScheme() === 'dark') {
   status = false;
 }
 const App = () => {
-  const [isDarkTheme, setIsDarkTheme] = React.useState(status);
+  const [isDarkTheme, setIsDarkTheme] = useState(status);
 
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
 

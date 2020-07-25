@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, SafeAreaView, ImageBackground } from 'react-native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HTML from 'react-native-render-html';
-import { Text } from 'react-native-paper';
 import Learn from '../components/Learn';
 
 const Home = (props) => {
