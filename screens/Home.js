@@ -1,9 +1,12 @@
-import React from 'react';
-import { StyleSheet, View, SafeAreaView, ImageBackground } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, View, ImageBackground } from 'react-native';
 import HTML from 'react-native-render-html';
 import Learn from '../components/Learn';
+import mainContext from '../context/mainContext';
+import { Button } from 'react-native-paper';
 
 const Home = (props) => {
+  const { superalert } = useContext(mainContext);
   props.title = '';
   return (
     <ImageBackground
@@ -15,7 +18,7 @@ const Home = (props) => {
     >
       <View style={styles.container}>
         <HTML html="<b>hello</b> world" baseFontStyle={styles.htmltext} />
-        <Learn {...props} title="Click me" />
+        <Learn title="Click me" />
       </View>
     </ImageBackground>
   );

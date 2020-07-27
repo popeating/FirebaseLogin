@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Appearance } from 'react-native';
 import {
   NavigationContainer,
@@ -12,6 +12,8 @@ import {
   DarkTheme as PaperDarkTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
+
+import mainContext from './context/mainContext';
 
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
@@ -37,24 +39,28 @@ const App = () => {
 
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
 
-  const inHome = () => {
-    setIsDarkTheme((isDark) => !isDark);
-  };
+  const mainC = useMemo(
+    () => ({
+      inHome: () => setIsDarkTheme((isDark) => !isDark),
+    }),
+    []
+  );
+
   return (
-    <PaperProvider theme={theme}>
-      {isDarkTheme ? <StatusBar style="light" /> : <StatusBar style="dark" />}
-      <NavigationContainer theme={theme}>
-        <AppDrawer.Navigator initialRouteName="Home">
-          <AppDrawer.Screen name="Home">
-            {() => <Tabs inHome={inHome} />}
-          </AppDrawer.Screen>
-          <AppDrawer.Screen
-            name="Notifications"
-            component={Notification}
-          ></AppDrawer.Screen>
-        </AppDrawer.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    <mainContext.Provider value={mainC}>
+      <PaperProvider theme={theme}>
+        {isDarkTheme ? <StatusBar style="light" /> : <StatusBar style="dark" />}
+        <NavigationContainer theme={theme}>
+          <AppDrawer.Navigator initialRouteName="Home">
+            <AppDrawer.Screen name="Home">{() => <Tabs />}</AppDrawer.Screen>
+            <AppDrawer.Screen
+              name="Notifications"
+              component={Notification}
+            ></AppDrawer.Screen>
+          </AppDrawer.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </mainContext.Provider>
   );
 };
 

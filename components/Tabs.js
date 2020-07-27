@@ -19,7 +19,7 @@ const Tabs = (props) => {
           tabBarIcon: 'home-account',
         }}
       >
-        {() => <Home inHome={props.inHome} />}
+        {() => <Home />}
       </Tab.Screen>
 
       <Tab.Screen

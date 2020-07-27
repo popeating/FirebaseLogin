@@ -17,12 +17,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Basic Nested navigation with drawer and tabs",
+    "description": "Basic Nested navigation with drawer and tabs, dark mode, and maps",
     "githubUrl": "https://github.com/popeating/myApp"
   }
 }
