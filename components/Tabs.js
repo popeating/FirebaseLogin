@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 
 import Home from '../screens/Home';
 import Notification from '../screens/Notification';
+import loc from '../utils/localization';
 
 const Tab = createMaterialBottomTabNavigator();
 console.log(Tab);
@@ -14,7 +15,7 @@ const Tabs = (props) => {
       sceneAnimationEnabled={false}
     >
       <Tab.Screen
-        name="Home"
+        name={loc.t('home')}
         options={{
           tabBarIcon: 'home-account',
         }}
@@ -23,7 +24,7 @@ const Tabs = (props) => {
       </Tab.Screen>
 
       <Tab.Screen
-        name="Notifications"
+        name={loc.t('notifiche')}
         component={Notification}
         options={{
           tabBarIcon: 'bell-outline',

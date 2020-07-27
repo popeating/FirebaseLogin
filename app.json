@@ -17,7 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses locations to finde restaurants near you.",
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

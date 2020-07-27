@@ -1,1 +1,6 @@
-export default { mappa: 'Map', clickme: 'Click me' };
+export default {
+  mappa: 'Map',
+  clickme: 'Click me',
+  home: 'Home',
+  notifiche: 'Notifications',
+};
