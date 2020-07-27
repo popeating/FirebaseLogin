@@ -4,6 +4,7 @@ import HTML from 'react-native-render-html';
 import Learn from '../components/Learn';
 import mainContext from '../context/mainContext';
 import { Button } from 'react-native-paper';
+import loc from '../utils/localization';
 
 const Home = (props) => {
   const { superalert } = useContext(mainContext);
@@ -18,7 +19,7 @@ const Home = (props) => {
     >
       <View style={styles.container}>
         <HTML html="<b>hello</b> world" baseFontStyle={styles.htmltext} />
-        <Learn title="Click me" />
+        <Learn title={loc.t('clickme')} />
       </View>
     </ImageBackground>
   );

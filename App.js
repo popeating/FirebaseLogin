@@ -15,6 +15,14 @@ import {
 
 import mainContext from './context/mainContext';
 
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+i18n.locale = Localization.locale;
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true;
+
+console.log(i18n.locale);
+
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
   ...DefaultTheme,

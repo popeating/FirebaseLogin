@@ -9,6 +9,8 @@ import * as Location from 'expo-location';
 import { Text, Button } from 'react-native-paper';
 import { color } from 'react-native-reanimated';
 
+import loc from '../utils/localization';
+
 const Notification = (props) => {
   goDirections = (lat, long) => {
     let daddr = encodeURIComponent(+lat + ', ' + long);
@@ -48,7 +50,7 @@ const Notification = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>MAPPA</Text>
+      <Text>{loc.t('mappa')}</Text>
       {region ? (
         <MapView initialRegion={region} style={styles.mapppy}>
           <Marker
