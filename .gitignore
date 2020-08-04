@@ -11,10 +11,10 @@ web-build/
 keystore.txt
 screens/Home.js
 components/*
-
+app.json
 # macOS
 .DS_Store
 screens/Home.js
 screens/Notifications.js
-app.json
-app.json
+
+

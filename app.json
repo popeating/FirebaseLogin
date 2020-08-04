@@ -19,7 +19,7 @@
     "ios": {
       "bundleIdentifier": "com.popeating.myapp",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "This app uses locations to find restaurants near you.",
+        "NSLocationWhenInUseUsageDescription": "",
         "CFBundleAllowMixedLocalizations": true
       }
     },
@@ -30,8 +30,8 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Basic Nested navigation with drawer and tabs, dark mode, and maps",
-    "githubUrl": "https://github.com/popeating/myApp",
+    "description": "Basic Firebase Login",
+    "githubUrl": "https://github.com/popeating/FirebaseLogin",
     "extra": {
       "IOS_KEY": "",
       "ANDROID_KEY": "",
