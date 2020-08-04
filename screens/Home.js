@@ -8,7 +8,7 @@ import loc from '../utils/localization';
 
 const Home = (props) => {
   const { superalert } = useContext(mainContext);
-  props.title = '';
+  props.title = 'z';
   return (
     <ImageBackground
       source={{

@@ -14,3 +14,4 @@ components/*
 
 # macOS
 .DS_Store
+screens/Home.js
