@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useMemo, useEffect } from 'react';
-import { Appearance } from 'react-native';
+import { Appearance, View } from 'react-native';
 import {
   NavigationContainer,
   DarkTheme,
@@ -11,6 +11,7 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
   Provider as PaperProvider,
+  ActivityIndicator,
 } from 'react-native-paper';
 
 import mainContext from './context/mainContext';
@@ -57,12 +58,14 @@ const App = ({ navigation }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(status);
   const [userLogged, setUserLogged] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
-  //const theme = CombinedDefaultTheme;
+
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((user) => {
       setUserLogged(user ? true : false);
+      setIsLoading(false);
       setUserProfile(user);
     });
   }, []);
@@ -73,13 +76,25 @@ const App = ({ navigation }) => {
       inHome: () => setIsDarkTheme((isDark) => !isDark),
       signOutUser: () => Firebase.auth().signOut(),
       handleLogin: (email, password) => {
+        setIsLoading(true);
         Firebase.auth()
           .signInWithEmailAndPassword(email, password)
+
           .catch((error) => console.log(error));
       },
     }),
     []
   );
+
+  if (isLoading) {
+    // Checking if already logged in
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator animating={true} size="large" />
+      </View>
+    );
+  }
+
   return (
     <mainContext.Provider value={mainC}>
       <PaperProvider theme={theme}>
