@@ -33,15 +33,7 @@
     "description": "Basic Nested navigation with drawer and tabs, dark mode, and maps",
     "githubUrl": "https://github.com/popeating/myApp",
     "extra": {
-      "IOS_KEY": "853041645422-c20r5btcvcra1hujp8qp0afc0co5d58r.apps.googleusercontent.com",
-      "ANDROID_KEY": "853041645422-7uljdeehsskjhffic9rabeag2n13845d.apps.googleusercontent.com",
-      "API_KEY": "AIzaSyDlczdZE1BLSbE9gMo8BqHBy13Ff1Ngf0s",
-      "AUTH_DOMAIN": "basiclogin-f8d4e.firebaseapp.com",
-      "DATABASE_URL": "https://basiclogin-f8d4e.firebaseio.com",
-      "PROJECT_ID": "basiclogin-f8d4e",
-      "STORAGE_BUCKET": "basiclogin-f8d4e.appspot.com",
-      "MESSAGE_SENDER_ID": "266044215315",
-      "APP_ID": "1:266044215315:web:58bc8017a7ae36472aefe6"
+
     }
   }
 }
