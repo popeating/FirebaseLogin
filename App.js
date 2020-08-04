@@ -16,13 +16,7 @@ import {
 
 import mainContext from './context/mainContext';
 
-import * as Localization from 'expo-localization';
-import i18n from 'i18n-js';
-
 import Firebase from './Firebase';
-
-i18n.locale = Localization.locale;
-i18n.fallbacks = true;
 
 //console.log(i18n.locale);
 
