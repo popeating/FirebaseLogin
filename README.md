@@ -12,8 +12,19 @@ This small app is a simple MVP that showcase how to login with email using Fireb
   - expo-localization 
   - react-native-paper
 - A basic knowledge of react-native and expo
+- A basic knowledge of Dark theming an app
+- A basic knowledge of app localization
+- A basic knowledge of app.json configuration
 
 ## Configuration
 Edit app.json file adding (in 'extra' section) the configuration you get from your Firebase project
+
+## Functionality
+The app is composed by 2 main navigation stacks, the first stack holds the login screen and the signup screen, the secondo one holds the home screen for logged in user; at startup the app check if the user is already logged in and display the appropriate stack; the home screen also contain a prototype of theme switching button.
+
+All the main function (like the signin and signout function) are located in App.js and passed to screen and components via context
+
+## To do
+At the moment the signup screen is just a placeholder
 
 If you need assistance about this project you can email me at lennaz@gmail.com
