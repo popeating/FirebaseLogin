@@ -8,7 +8,7 @@ const HomeScreen = () => {
   const { currentUser } = Firebase.auth();
   //console.log(currentUser);
   //const signOutUser = () => Firebase.auth().signOut();
-
+  //const { userProfile } = useContext(mainContext);
   const { signOutUser } = useContext(mainContext);
   const { inHome } = useContext(mainContext);
 

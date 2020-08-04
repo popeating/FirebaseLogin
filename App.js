@@ -108,9 +108,11 @@ const App = ({ navigation }) => {
               </>
             ) : (
               <>
-                <AppStack.Screen name="Home">
-                  {() => <HomeScreen userprofile={userProfile} />}
-                </AppStack.Screen>
+                <AppStack.Screen
+                  name="Home"
+                  component={HomeScreen}
+                  options={{ headerShown: false }}
+                />
               </>
             )}
           </AppStack.Navigator>
