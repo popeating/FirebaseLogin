@@ -73,8 +73,8 @@ const App = ({ navigation }) => {
         setIsLoading(true);
         Firebase.auth()
           .signInWithEmailAndPassword(email, password)
-
           .catch((error) => console.log(error));
+        setIsLoading(false);
       },
     }),
     []
