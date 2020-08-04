@@ -31,9 +31,15 @@
       "favicon": "./assets/favicon.png"
     },
     "description": "Basic Nested navigation with drawer and tabs, dark mode, and maps",
-    "githubUrl": "https://github.com/popeating/myApp",
+    "githubUrl": "https://github.com/popeating/FirebaseLogin",
     "extra": {
-
+      "API_KEY": "",
+      "AUTH_DOMAIN": "",
+      "DATABASE_URL": "",
+      "PROJECT_ID": "",
+      "STORAGE_BUCKET": "",
+      "MESSAGE_SENDER_ID": "",
+      "APP_ID": ""
     }
   }
 }
