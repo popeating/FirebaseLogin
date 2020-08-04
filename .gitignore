@@ -16,3 +16,4 @@ components/*
 .DS_Store
 screens/Home.js
 screens/Notifications.js
+app.json
