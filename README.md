@@ -5,12 +5,12 @@ This small app is a simple MVP that showcase how to login with email using Fireb
 ## Prerequisites
 - An active Firebase project with (at least) email authentication, some test users
 - Expo project with the following modules installed: 
- - @react-navigation/native
- - @react-navigation/stack
- - firebase
- - i18n-js 
- - expo-localization 
- - react-native-paper
+  - @react-navigation/native
+  - @react-navigation/stack
+  - firebase
+  - i18n-js 
+  - expo-localization 
+  - react-native-paper
 - A basic knowledge of react-native and expo
 
 ## Configuration
