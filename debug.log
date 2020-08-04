@@ -1,0 +1,4 @@
+[0728/015105.147:ERROR:process_info.cc(359)] UncheckedAllocate
+[0728/015105.156:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\lorenzo\AppData\Local\Google\Chrome\User Data\Crashpad\reports\ff322978-eef4-4da7-bf3e-2b1f5386fede.dmp: Impossibile accedere al file. Il file è utilizzato da un altro processo. (0x20)
+[0728/015105.173:ERROR:process_info.cc(359)] UncheckedAllocate
+[0728/015133.021:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\lorenzo\AppData\Local\Google\Chrome\User Data\Crashpad\reports\47cad86f-4f11-4197-9c5f-2738e6572841.dmp: Impossibile accedere al file. Il file è utilizzato da un altro processo. (0x20)

@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 
 import Home from '../screens/Home';
 import Notification from '../screens/Notification';
+import LoginScreen from '../screens/LoginScreen';
 import loc from '../utils/localization';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -28,6 +29,13 @@ const Tabs = (props) => {
         component={Notification}
         options={{
           tabBarIcon: 'bell-outline',
+        }}
+      />
+      <Tab.Screen
+        name={loc.t('entra')}
+        component={LoginScreen}
+        options={{
+          tabBarIcon: 'login',
         }}
       />
     </Tab.Navigator>

@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Appearance } from 'react-native';
 import {
   NavigationContainer,
   DarkTheme,
   DefaultTheme,
 } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
@@ -17,11 +17,13 @@ import mainContext from './context/mainContext';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
+
+import Firebase from './Firebase';
+
 i18n.locale = Localization.locale;
-// When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
 
-console.log(i18n.locale);
+//console.log(i18n.locale);
 
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
@@ -32,40 +34,77 @@ const CombinedDefaultTheme = {
     primary: '#718E57',
   },
 };
-const CombinedDarkTheme = { ...PaperDarkTheme, ...DarkTheme };
-import Notification from './screens/Notification';
-import Tabs from './components/Tabs';
-const AppDrawer = createDrawerNavigator();
+const CombinedDarkTheme = {
+  ...PaperDarkTheme,
+  ...DarkTheme,
+  dark: true,
+  colors: { ...PaperDarkTheme.colors, ...DarkTheme.colors, primary: '#718E57' },
+};
+
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import loc from './utils/localization';
+const AppStack = createStackNavigator();
 if (Appearance.getColorScheme() === 'dark') {
-  console.log('dark');
   status = true;
 } else {
   status = false;
 }
-const App = () => {
+
+const App = ({ navigation }) => {
+  //console.log(Firebase);
   const [isDarkTheme, setIsDarkTheme] = useState(status);
+  const [userLogged, setUserLogged] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
 
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
+  //const theme = CombinedDefaultTheme;
+  useEffect(() => {
+    Firebase.auth().onAuthStateChanged((user) => {
+      setUserLogged(user ? true : false);
+      setUserProfile(user);
+    });
+  }, []);
 
   const mainC = useMemo(
     () => ({
+      userProfile: { userProfile },
       inHome: () => setIsDarkTheme((isDark) => !isDark),
+      signOutUser: () => Firebase.auth().signOut(),
+      handleLogin: (email, password) => {
+        Firebase.auth()
+          .signInWithEmailAndPassword(email, password)
+          .catch((error) => console.log(error));
+      },
     }),
     []
   );
-
   return (
     <mainContext.Provider value={mainC}>
       <PaperProvider theme={theme}>
         {isDarkTheme ? <StatusBar style="light" /> : <StatusBar style="dark" />}
         <NavigationContainer theme={theme}>
-          <AppDrawer.Navigator initialRouteName="Home">
-            <AppDrawer.Screen name="Home">{() => <Tabs />}</AppDrawer.Screen>
-            <AppDrawer.Screen
-              name="Notifications"
-              component={Notification}
-            ></AppDrawer.Screen>
-          </AppDrawer.Navigator>
+          <AppStack.Navigator initialRouteName="Login">
+            {userLogged == false ? (
+              <>
+                <AppStack.Screen name="Login" component={LoginScreen} />
+
+                <AppStack.Screen
+                  name="Signup"
+                  options={{ title: loc.t('signup') }}
+                >
+                  {() => <SignUpScreen />}
+                </AppStack.Screen>
+              </>
+            ) : (
+              <>
+                <AppStack.Screen name="Home">
+                  {() => <HomeScreen userprofile={userProfile} />}
+                </AppStack.Screen>
+              </>
+            )}
+          </AppStack.Navigator>
         </NavigationContainer>
       </PaperProvider>
     </mainContext.Provider>

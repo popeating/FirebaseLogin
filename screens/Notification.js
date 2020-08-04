@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, Dimensions, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import * as Linking from 'expo-linking';
 
 import * as Location from 'expo-location';
 
-import { Text, Button } from 'react-native-paper';
-import { color } from 'react-native-reanimated';
+import { Text, Button, Chip, Searchbar, Appbar } from 'react-native-paper';
 
 import loc from '../utils/localization';
 
-const Notification = (props) => {
+const Notification = ({ navigation }) => {
   goDirections = (lat, long) => {
     let daddr = encodeURIComponent(+lat + ', ' + long);
     console.log(daddr);
@@ -50,6 +55,8 @@ const Notification = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={{ position: 'absolute', top: 40, left: 0, right: 0 }}></View>
+
       <Text>{loc.t('mappa')}</Text>
       {region ? (
         <MapView initialRegion={region} style={styles.mapppy}>
@@ -76,6 +83,26 @@ const Notification = (props) => {
       ) : (
         <Text>Waiting</Text>
       )}
+
+      {/* <View style={{ position: 'absolute', top: 60, width: '80%' }}>
+        <Searchbar />
+      </View>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={{ position: 'absolute', top: 120 }}
+      >
+        <Chip
+          style={{ marginHorizontal: 5 }}
+          onPress={() => console.log('Pressed')}
+        >
+          Restaurant
+        </Chip>
+        <Chip style={{ marginHorizontal: 5 }}>Fast Food</Chip>
+        <Chip style={{ marginHorizontal: 5 }}>Hamburger</Chip>
+        <Chip style={{ marginHorizontal: 5 }}>Hotel</Chip>
+        <Chip style={{ marginHorizontal: 5 }}>Agriturism</Chip>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };

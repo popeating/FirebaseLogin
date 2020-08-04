@@ -8,6 +8,9 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+keystore.txt
+screens/Home.js
+components/*
 
 # macOS
 .DS_Store
