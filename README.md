@@ -25,6 +25,6 @@ The app is composed by 2 main navigation stacks, the first stack holds the login
 All the main function (like the signin and signout function) are located in App.js and passed to screen and components via context
 
 ## To do
-At the moment the signup screen is just a placeholder
+Handling error Messages
 
 If you need assistance about this project you can email me at lennaz@gmail.com
