@@ -72,7 +72,14 @@ const App = ({ navigation }) => {
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .catch((error) => console.log(error));
-    //setIsLoading(false);
+  };
+
+  const doSignup = async (email, password) => {
+    setIsLoading(true);
+    //console.log('login' + JSON.stringify(userProfile));
+    Firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((error) => console.log(error));
   };
 
   const mainC = useMemo(
@@ -82,6 +89,9 @@ const App = ({ navigation }) => {
       signOutUser: () => Firebase.auth().signOut(),
       handleLogin: (email, password) => {
         doLogin(email, password);
+      },
+      handleSignup: (email, password) => {
+        doSignup(email, password);
       },
     }),
     []

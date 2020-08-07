@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -8,11 +8,15 @@ import {
 
 import { TextInput, Button } from 'react-native-paper';
 import loc from '../utils/localization';
+import mainContext from '../context/mainContext';
 
 const SignUpScreen = ({ navigation }) => {
+  const { handleSignup } = useContext(mainContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  console.log(mainContext);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -47,7 +51,11 @@ const SignUpScreen = ({ navigation }) => {
           />
         </View>
 
-        <Button mode="contained" icon="login">
+        <Button
+          mode="contained"
+          icon="login"
+          onPress={() => handleSignup(email, password)}
+        >
           {loc.t('signupButton')}
         </Button>
       </View>
