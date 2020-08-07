@@ -40,6 +40,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import loc from './utils/localization';
+import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 const AppStack = createStackNavigator();
 if (Appearance.getColorScheme() === 'dark') {
   status = true;
@@ -57,12 +58,22 @@ const App = ({ navigation }) => {
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
 
   useEffect(() => {
-    Firebase.auth().onAuthStateChanged((user) => {
+    const authListener = Firebase.auth().onAuthStateChanged((user) => {
       setUserLogged(user ? true : false);
       setIsLoading(false);
       setUserProfile(user);
     });
+    return authListener;
   }, []);
+
+  const doLogin = async (email, password) => {
+    setIsLoading(true);
+    //console.log('login' + JSON.stringify(userProfile));
+    Firebase.auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => console.log(error));
+    //setIsLoading(false);
+  };
 
   const mainC = useMemo(
     () => ({
@@ -70,11 +81,7 @@ const App = ({ navigation }) => {
       inHome: () => setIsDarkTheme((isDark) => !isDark),
       signOutUser: () => Firebase.auth().signOut(),
       handleLogin: (email, password) => {
-        setIsLoading(true);
-        Firebase.auth()
-          .signInWithEmailAndPassword(email, password)
-          .catch((error) => console.log(error));
-        setIsLoading(false);
+        doLogin(email, password);
       },
     }),
     []

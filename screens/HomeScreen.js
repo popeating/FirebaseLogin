@@ -8,9 +8,11 @@ const HomeScreen = () => {
   const { currentUser } = Firebase.auth();
   //console.log(currentUser);
   //const signOutUser = () => Firebase.auth().signOut();
-  //const { userProfile } = useContext(mainContext);
+  const { userProfile } = useContext(mainContext);
   const { signOutUser } = useContext(mainContext);
   const { inHome } = useContext(mainContext);
+
+  console.log(mainContext);
 
   return (
     <View style={styles.container}>
@@ -18,7 +20,9 @@ const HomeScreen = () => {
         <Title>Home Screen</Title>
       </View>
       <View style={styles.box}>
-        <Paragraph>{currentUser.email}</Paragraph>
+        <Paragraph>
+          {currentUser.email} - {userProfile.userProfile.email}
+        </Paragraph>
       </View>
       <View style={styles.box}>
         <Button onPress={() => signOutUser()} mode="contained" icon="logout">
