@@ -1,6 +1,8 @@
 # FirebaseLogin react-native appp skeleton
 
 This small app is a simple MVP that showcase how to login with email using Firebase, it uses Expoand make extensive use of many react-native extensions, like react-naive-paper, expo-transaltion
+The app is used as a tutorial for this article:
+https://medium.com/me/stats/post/2e413e9a4890
 
 ## Prerequisites
 - An active Firebase project with (at least) email authentication, some test users
